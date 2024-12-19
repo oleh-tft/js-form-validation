@@ -76,11 +76,11 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" required>
         </div>
         <div class="form-group">
             <label for="age">Возраст</label>
-            <input type="number" name="age" id="age" min="18">
+            <input type="number" name="age" id="age" min="18" required>
         </div>
         <input type="submit" value="Save" id="saveButton">
         <input type="reset" value="Reset">
@@ -299,19 +299,17 @@
             formService.fillForm(listService.selectedData);
         });
 
-        saveButton.addEventListener("click", function () {
+        formService.form.addEventListener("submit", function(e) {
+            e.preventDefault();
             formService.saveForm();
-        });
+        })
 
         // удаляем и очищаем форму
         deleteButton.addEventListener("click", function () {
             listService.deleteSelectedItem();
             formService.resetForm();
         });
-
-        saveButton.addEventListener("submit", function(e) {
-
-        })
+        
     </script>
 </body>
 
